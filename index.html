@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ali Pilehvar Meibody — Academic CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAFAF7;
+    --warm-white: #F5F4EF;
+    --parchment: #EDE9E0;
+    --gold: #8B6914;
+    --gold-light: #C9A84C;
+    --navy: #1A2744;
+    --navy-mid: #2C3E6B;
+    --text-primary: #1C1C1C;
+    --text-secondary: #4A4A4A;
+    --text-muted: #7A7A7A;
+    --rule: #C8C0B0;
+    --rule-light: #E0DAD0;
+    --accent-red: #8B2020;
+    --section-gap: 3.5rem;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── TOPBAR NAV ─── */
+  #topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250,250,247,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 54px;
+  }
+  #topbar .brand {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+    font-weight: 500;
+  }
+  #topbar nav {
+    display: flex;
+    gap: 2rem;
+  }
+  #topbar nav a {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  #topbar nav a:hover { color: var(--gold); }
+
+  /* ─── HERO ─── */
+  #hero {
+    margin-top: 54px;
+    background: var(--navy);
+    padding: 5rem 0 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 59px,
+        rgba(255,255,255,0.025) 59px,
+        rgba(255,255,255,0.025) 60px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 59px,
+        rgba(255,255,255,0.025) 59px,
+        rgba(255,255,255,0.025) 60px
+      );
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero-photo-wrap {
+    position: relative;
+  }
+  .hero-photo-wrap img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--gold-light);
+    display: block;
+  }
+  .hero-photo-placeholder {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 3px solid var(--gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.75rem;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+  .hero-text h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.6rem;
+    color: #FFFFFF;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 0.35rem;
+  }
+  .hero-text .title-line {
+    font-size: 0.95rem;
+    color: var(--gold-light);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .hero-text p.summary {
+    color: rgba(255,255,255,0.72);
+    font-size: 0.92rem;
+    line-height: 1.75;
+    max-width: 560px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .hero-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.38rem 0.85rem;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .hero-links a:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: white;
+  }
+  .affiliation-logos {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.8rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    flex-wrap: wrap;
+  }
+  .affiliation-logos img {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.85;
+    filter: brightness(2) saturate(0);
+    transition: opacity 0.2s;
+  }
+  .affiliation-logos img:hover { opacity: 1; filter: none; }
+  .affil-placeholder {
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 0.7rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 3px;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* ─── MAIN LAYOUT ─── */
+  #main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 4rem;
+    padding-top: 3.5rem;
+    padding-bottom: 5rem;
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section { margin-bottom: var(--section-gap); }
+  .section-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: 0.01em;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--navy);
+    margin-bottom: 1.6rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+  }
+  .section-title span.num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  /* ─── EDUCATION ─── */
+  .edu-item {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 0 1rem;
+    margin-bottom: 1.8rem;
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .edu-item:last-child { border-bottom: none; margin-bottom: 0; }
+  .edu-logo {
+    padding-top: 3px;
+  }
+  .edu-logo img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 4px;
+    background: white;
+  }
+  .edu-logo .logo-ph {
+    width: 44px;
+    height: 44px;
+    background: var(--parchment);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    text-align: center;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .edu-body .degree {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+  .edu-body .institution {
+    font-size: 0.85rem;
+    color: var(--navy-mid);
+    font-weight: 600;
+    margin-top: 0.1rem;
+    letter-spacing: 0.01em;
+  }
+  .edu-body .edu-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .edu-body .edu-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .gpa-badge {
+    display: inline-block;
+    background: var(--navy);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.1rem 0.5rem;
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+    margin-left: 0.3rem;
+  }
+  .edu-body .edu-note {
+    font-size: 0.83rem;
+    color: var(--text-secondary);
+    margin-top: 0.6rem;
+    padding-left: 0.8rem;
+    border-left: 2px solid var(--gold-light);
+  }
+
+  /* ─── PUBLICATIONS ─── */
+  .pub-item {
+    margin-bottom: 1.6rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid var(--rule-light);
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0 1.2rem;
+  }
+  .pub-item:last-child { border-bottom: none; margin-bottom: 0; }
+  .pub-thumb {
+    position: relative;
+  }
+  .pub-thumb img {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    display: block;
+  }
+  .pub-thumb .img-ph {
+    width: 100px;
+    height: 70px;
+    background: var(--parchment);
+    border: 1px dashed var(--rule);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+  .pub-body .pub-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 0.2rem;
+  }
+  .pub-body .pub-authors {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+    font-style: italic;
+  }
+  .pub-body .pub-authors strong {
+    color: var(--navy);
+    font-style: normal;
+    font-weight: 600;
+  }
+  .pub-body .pub-journal {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .pub-body .pub-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-left: 0.5rem;
+  }
+  .pub-tags {
+    margin-top: 0.4rem;
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+  }
+  .tag-published { background: #EAF2E8; color: #2D6A2D; }
+  .tag-review { background: #FFF3E0; color: #B06000; }
+  .tag-prep { background: #F3EFF8; color: #5C3D8F; }
+  .tag-highlight { background: var(--navy); color: white; }
+
+  /* ─── EXPERIENCE ─── */
+  .exp-item {
+    margin-bottom: 1.6rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  .exp-logo img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 3px;
+    background: white;
+  }
+  .exp-logo .logo-ph {
+    width: 38px;
+    height: 38px;
+    background: var(--parchment);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5rem;
+    color: var(--text-muted);
+    text-align: center;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .exp-meta { flex: 1; }
+  .exp-meta .role {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.25;
+  }
+  .exp-meta .org {
+    font-size: 0.83rem;
+    color: var(--navy-mid);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .exp-meta .period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+  }
+  .exp-body {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    padding-left: 47px;
+  }
+  .exp-body ul {
+    list-style: none;
+    padding: 0;
+  }
+  .exp-body ul li {
+    padding-left: 1rem;
+    position: relative;
+    margin-bottom: 0.25rem;
+  }
+  .exp-body ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.8rem;
+  }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar { padding-top: 0; }
+  .sidebar .section-title {
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+  }
+  .sidebar .section { margin-bottom: 2.8rem; }
+
+  .skill-group {
+    margin-bottom: 1rem;
+  }
+  .skill-group .skill-cat {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .skill-pill {
+    font-size: 0.74rem;
+    padding: 0.2rem 0.55rem;
+    background: var(--warm-white);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .skill-pill.highlight {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+  }
+
+  .cert-item {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--rule-light);
+    font-size: 0.8rem;
+  }
+  .cert-item:last-child { border-bottom: none; }
+  .cert-name {
+    color: var(--text-primary);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .cert-org {
+    color: var(--text-muted);
+    font-size: 0.74rem;
+    margin-top: 0.1rem;
+  }
+
+  .contact-list {
+    list-style: none;
+    font-size: 0.82rem;
+  }
+  .contact-list li {
+    margin-bottom: 0.55rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .contact-list .cicon {
+    font-size: 0.75rem;
+    color: var(--gold);
+    margin-top: 0.15rem;
+    min-width: 14px;
+  }
+  .contact-list a {
+    color: var(--navy-mid);
+    text-decoration: none;
+    word-break: break-all;
+  }
+  .contact-list a:hover { color: var(--gold); text-decoration: underline; }
+
+  .ref-item {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--rule-light);
+    font-size: 0.8rem;
+  }
+  .ref-item:last-child { border-bottom: none; }
+  .ref-name {
+    font-weight: 600;
+    color: var(--navy);
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+  }
+  .ref-title {
+    color: var(--text-secondary);
+    font-size: 0.77rem;
+    line-height: 1.4;
+    margin: 0.15rem 0;
+  }
+  .ref-email {
+    color: var(--text-muted);
+    font-size: 0.74rem;
+  }
+
+  /* ─── TEACHING ─── */
+  .teach-item {
+    margin-bottom: 1.1rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .teach-item:last-child { border-bottom: none; }
+  .teach-item .course-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  .teach-item .course-meta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.1rem;
+    flex-wrap: wrap;
+  }
+  .teach-item .course-meta .hours {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    color: var(--gold);
+  }
+
+  /* ─── EXPERIMENTAL SKILLS TABLE ─── */
+  .exp-skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.35rem 1rem;
+    font-size: 0.82rem;
+  }
+  .exp-skill-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    color: var(--text-secondary);
+  }
+  .exp-skill-item::before {
+    content: '·';
+    color: var(--gold);
+    font-size: 1rem;
+    line-height: 0;
+    position: relative;
+    top: 2px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 1.8rem 3rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+  }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner { animation: fadeUp 0.7s ease both; }
+  #main { animation: fadeUp 0.8s 0.15s ease both; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    #topbar { padding: 0 1.2rem; }
+    #topbar nav { gap: 1rem; }
+    .hero-inner { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 1.5rem; }
+    .hero-photo-wrap { display: flex; justify-content: center; }
+    #main { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 0; }
+    .sidebar { margin-top: 2rem; border-top: 2px solid var(--rule); padding-top: 2rem; }
+    .pub-item { grid-template-columns: 80px 1fr; }
+    .pub-thumb img, .pub-thumb .img-ph { width: 80px; height: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── TOPBAR ─── -->
+<header id="topbar">
+  <div class="brand">Ali Pilehvar Meibody</div>
+  <nav>
+    <a href="#education">Education</a>
+    <a href="#publications">Publications</a>
+    <a href="#experience">Experience</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#projects">Projects</a>
+  </nav>
+</header>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-photo-wrap">
+      <img src="figures/photo.jpg" alt="Ali Pilehvar Meibody"
+           onerror="this.outerHTML='<div class=\'hero-photo-placeholder\'>Photo</div>'">
+    </div>
+    <div class="hero-text">
+      <h1>Ali Pilehvar Meibody</h1>
+      <div class="title-line">Materials Engineering · AI &amp; Deep Learning · Nanotechnology</div>
+      <p class="summary">
+        Graduate researcher at Politecnico di Torino and EPFL, developing deep learning and statistical algorithms for optimization and predictive modeling in advanced engineering applications — particularly nanotechnology and semiconductors. Lead of the AI Group at GAM Laboratory, Amirkabir University of Technology. Founder of AI-driven startups PLUTUS and BlueNest.
+      </p>
+      <div class="hero-links">
+        <a href="mailto:Alipilehvar1999@gmail.com">✉ Email</a>
+        <a href="https://linkedin.com" target="_blank">in LinkedIn</a>
+        <a href="https://github.com" target="_blank">⌥ GitHub</a>
+        <a href="https://getplutus.solutions" target="_blank">↗ PLUTUS</a>
+        <a href="https://bluenest.ai" target="_blank">↗ BlueNest</a>
+        <a href="https://youtube.com" target="_blank">▶ YouTube</a>
+      </div>
+      <div class="affiliation-logos">
+        <img src="figures/logo_epfl.png" alt="EPFL"
+             onerror="this.outerHTML='<span class=\'affil-placeholder\'>EPFL</span>'">
+        <img src="figures/logo_polito.png" alt="Politecnico di Torino"
+             onerror="this.outerHTML='<span class=\'affil-placeholder\'>Polito</span>'">
+        <img src="figures/logo_amirkabir.png" alt="Amirkabir University"
+             onerror="this.outerHTML='<span class=\'affil-placeholder\'>AUT</span>'">
+        <img src="figures/logo_gamlab.png" alt="GAM Lab"
+             onerror="this.outerHTML='<span class=\'affil-placeholder\'>GAM Lab</span>'">
+        <img src="figures/logo_plutus.png" alt="PLUTUS"
+             onerror="this.outerHTML='<span class=\'affil-placeholder\'>PLUTUS</span>'">
+        <img src="figures/logo_bluenest.png" alt="BlueNest"
+             onerror="this.outerHTML='<span class=\'affil-placeholder\'>BlueNest</span>'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MAIN CONTENT ─── -->
+<div id="main">
+<main>
+
+  <!-- EDUCATION -->
+  <section class="section" id="education">
+    <h2 class="section-title"><span class="num">01</span> Education</h2>
+
+    <div class="edu-item">
+      <div class="edu-logo">
+        <img src="figures/logo_epfl.png" alt="EPFL"
+             onerror="this.outerHTML='<div class=\'logo-ph\'>EPFL</div>'">
+      </div>
+      <div class="edu-body">
+        <div class="degree">M.Sc. Thesis — Neuromorphic Computing</div>
+        <div class="institution">EPFL — Swiss Federal Institute of Technology Lausanne</div>
+        <div class="edu-meta">
+          <span>📍 Neuchâtel, Switzerland</span>
+          <span>Nov 2025 – Present</span>
+        </div>
+        <div class="edu-note">
+          Thesis: Co-design algorithm and hardware for Spiking Neural Networks on-device
+        </div>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-logo">
+        <img src="figures/logo_polito.png" alt="Polito"
+             onerror="this.outerHTML='<div class=\'logo-ph\'>Polito</div>'">
+      </div>
+      <div class="edu-body">
+        <div class="degree">M.Sc. in Materials Engineering for Industry 4.0</div>
+        <div class="institution">Politecnico di Torino</div>
+        <div class="edu-meta">
+          <span>📍 Turin, Italy</span>
+          <span>Sep 2023 – Present</span>
+          <span>GPA <span class="gpa-badge">3.89 / 4.00</span></span>
+          <span>120 CFU completed</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-logo">
+        <img src="figures/logo_amirkabir.png" alt="AUT"
+             onerror="this.outerHTML='<div class=\'logo-ph\'>AUT</div>'">
+      </div>
+      <div class="edu-body">
+        <div class="degree">B.Sc. in Polymer Engineering</div>
+        <div class="institution">Amirkabir University of Technology</div>
+        <div class="edu-meta">
+          <span>📍 Tehran, Iran</span>
+          <span>Sep 2017 – Feb 2022</span>
+          <span>GPA <span class="gpa-badge">3.00 / 4.00</span></span>
+        </div>
+        <div class="edu-note">
+          Thesis: Modeling interfacial self-adhesion of linear polyethylene with MATLAB and comparison of machine learning methods
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section class="section" id="publications">
+    <h2 class="section-title"><span class="num">02</span> Academic Publications</h2>
+
+    <!-- Published -->
+    <div style="margin-bottom:1rem;">
+      <span class="tag tag-published" style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.65rem;border-radius:2px;">● Published</span>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="figures/unraveling_the_molecular.png" alt="Unraveling the Molecular"
+             onerror="this.outerHTML='<div class=\'img-ph\'>Graphical<br>Abstract</div>'">
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">Unraveling the molecular magic: AI explains the formation of the most stretchable hydrogel</div>
+        <div class="pub-authors"><strong>Pilehvar Meibody, A.</strong>, Baldi, P., &amp; Emami, S.H.</div>
+        <div><span class="pub-journal">RSC — Reaction Chemistry &amp; Engineering</span><span class="pub-year">2024</span></div>
+        <div class="pub-tags"><span class="tag tag-published">Published</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="figures/metamaterials.png" alt="Metamaterials"
+             onerror="this.outerHTML='<div class=\'img-ph\'>Graphical<br>Abstract</div>'">
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">Metamaterials in ultra-strain hydrogels</div>
+        <div class="pub-authors"><strong>Pilehvar Meibody, A.</strong>, &amp; Emami, S.H.</div>
+        <div><span class="pub-journal">Results in Physics</span><span class="pub-year">2024</span></div>
+        <div class="pub-tags"><span class="tag tag-published">Published</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="figures/challenges.png" alt="HEA Challenges"
+             onerror="this.outerHTML='<div class=\'img-ph\'>Graphical<br>Abstract</div>'">
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">Challenges and opportunities in additive manufacturing of high-entropy alloys</div>
+        <div class="pub-authors"><strong>Pilehvar Meibody, A.</strong>, &amp; Saboori, A.</div>
+        <div><span class="pub-journal">Journal of Alloys and Compounds</span><span class="pub-year">2025</span></div>
+        <div class="pub-tags"><span class="tag tag-published">Published</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="figures/pygamlab_v1.png" alt="PyGamLab"
+             onerror="this.outerHTML='<div class=\'img-ph\'>Graphical<br>Abstract</div>'">
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">PyGamlab: A Python framework for advanced modeling, simulation, and AI in nanotechnology and materials science</div>
+        <div class="pub-authors"><strong>Pilehvar Meibody, A.</strong>, &amp; Naderi, M.</div>
+        <div><span class="pub-journal">Nanoscale and Advanced Materials</span><span class="pub-year">2024</span></div>
+        <div class="pub-tags"><span class="tag tag-published">Published</span><span class="tag tag-highlight">Software</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="figures/micro bubble.png" alt="Microbubbles"
+             onerror="this.outerHTML='<div class=\'img-ph\'>Graphical<br>Abstract</div>'">
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">Enabling Ultrastable Microbubbles with Graphene Aerogel Enrichment and Machine Learning for Highly Efficient Carbon Storage</div>
+        <div class="pub-authors">Naderi, M., Abdi Jalebi, M., &amp; <strong>Pilehvar Meibody, A.</strong></div>
+        <div><span class="pub-journal">Applied Materials Today</span><span class="pub-year">2024</span></div>
+        <div class="pub-tags"><span class="tag tag-published">Published</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="figures/ai_additie.png" alt="Additive Manufacturing QA"
+             onerror="this.outerHTML='<div class=\'img-ph\'>Graphical<br>Abstract</div>'">
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">Toward Closed-Loop Quality Assurance in Powder Bed Fusion Additive Manufacturing: Defect Detection, Machine Learning, and Computational Modeling</div>
+        <div class="pub-authors"><strong>Pilehvar Meibody, A.</strong>, &amp; Saboori, A.</div>
+        <div><span class="pub-journal">Journal of Manufacturing Processes</span><span class="pub-year">2025</span></div>
+        <div class="pub-tags"><span class="tag tag-published">Published</span></div>
+      </div>
+    </div>
+
+    <!-- In Preparation -->
+    <div style="margin: 1.6rem 0 1rem;">
+      <span class="tag tag-prep" style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.65rem;border-radius:2px;">○ In Preparation / Under Review</span>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="figures/mat_genome.png" alt="Material Genome"
+             onerror="this.outerHTML='<div class=\'img-ph\'>Graphical<br>Abstract</div>'">
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">Review on New Realm of Material Genome Project: Latest Advancement and Future Perspectives</div>
+        <div class="pub-authors"><strong>Pilehvar Meibody, A.</strong>, &amp; Naderi, M.</div>
+        <div><span class="pub-journal">Materials Today</span><span class="pub-year">In Preparation</span></div>
+        <div class="pub-tags"><span class="tag tag-prep">In Preparation</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="figures/defect_free.png" alt="Defect Free"
+             onerror="this.outerHTML='<div class=\'img-ph\'>Graphical<br>Abstract</div>'">
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">Toward Defect-Free Fabrication of Medium-Entropy Alloy (CrCoNi) with Novel Unsupervised Framework Integrated with Interpretable Supervised Model from Tomography Data</div>
+        <div class="pub-authors"><strong>Pilehvar Meibody, A.</strong>, &amp; Saboori, A.</div>
+        <div><span class="pub-journal">Materials &amp; Design</span><span class="pub-year">In Preparation</span></div>
+        <div class="pub-tags"><span class="tag tag-prep">In Preparation</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="figures/oxide.png" alt="Oxide Electrodes"
+             onerror="this.outerHTML='<div class=\'img-ph\'>Graphical<br>Abstract</div>'">
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">Corrosion-Resistant Non-Noble Metal Oxide Electrodes for Sustainable Hydrogen Production via Ammonia Electrooxidation</div>
+        <div class="pub-authors"><strong>Pilehvar Meibody, A.</strong>, &amp; Ghazitabar, A.</div>
+        <div><span class="pub-journal">Journal of Power Sources</span><span class="pub-year">In Preparation</span></div>
+        <div class="pub-tags"><span class="tag tag-prep">In Preparation</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="figures/3dprint1.png" alt="3D Printing"
+             onerror="this.outerHTML='<div class=\'img-ph\'>Graphical<br>Abstract</div>'">
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">3D Printing Parameter Optimization for Tissue Engineering Applications using Machine Learning Approaches</div>
+        <div class="pub-authors"><strong>Pilehvar Meibody, A.</strong>, Bagheri, S., &amp; Kafieh, R.</div>
+        <div><span class="pub-journal">Biofabrication</span><span class="pub-year">In Preparation</span></div>
+        <div class="pub-tags"><span class="tag tag-prep">In Preparation</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="figures/3print2.png" alt="IP3DP"
+             onerror="this.outerHTML='<div class=\'img-ph\'>Graphical<br>Abstract</div>'">
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">Machine-Learning Prediction of Shrinkage in IP3DP Technology: A Comprehensive Computational Framework</div>
+        <div class="pub-authors"><strong>Pilehvar Meibody, A.</strong>, &amp; Bagheri, S.</div>
+        <div><span class="pub-journal">Additive Manufacturing</span><span class="pub-year">In Preparation</span></div>
+        <div class="pub-tags"><span class="tag tag-prep">In Preparation</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="figures/pygamlab2.png" alt="PyGamLab V2"
+             onerror="this.outerHTML='<div class=\'img-ph\'>Graphical<br>Abstract</div>'">
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">PyGamLab V2: A Unified Computational and End-to-End Artificial Intelligence Platform for Nanotechnology and Materials Informatics</div>
+        <div class="pub-authors"><strong>Pilehvar Meibody, A.</strong>, Nekoonam, D., &amp; Naderi, M.</div>
+        <div><span class="pub-journal">In Preparation</span><span class="pub-year">2025</span></div>
+        <div class="pub-tags"><span class="tag tag-prep">In Preparation</span><span class="tag tag-highlight">Software</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">
+        <img src="figures/snn.png" alt="SNN Neuromorphic"
+             onerror="this.outerHTML='<div class=\'img-ph\'>Graphical<br>Abstract</div>'">
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">A Neuromorphic Front-End based on Memristive Biosensors for Risk Pre-Screening by Pulse-Encoded Signals</div>
+        <div class="pub-authors"><strong>Pilehvar Meibody, A.</strong>, Chen, J., &amp; Carrara, S.</div>
+        <div><span class="pub-journal">IEEE Sensors</span><span class="pub-year">In Preparation</span></div>
+        <div class="pub-tags"><span class="tag tag-prep">In Preparation</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK EXPERIENCE -->
+  <section class="section" id="experience">
+    <h2 class="section-title"><span class="num">03</span> Work Experience</h2>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-logo">
+          <img src="figures/logo_plutus.png" alt="PLUTUS"
+               onerror="this.outerHTML='<div class=\'logo-ph\'>PLUTUS</div>'">
+        </div>
+        <div class="exp-meta">
+          <div class="role">Founder &amp; CEO</div>
+          <div class="org">PLUTUS — AI-Based Startup</div>
+          <div class="period">Aug 2024 – Present · Part-time · getplutus.solutions</div>
+        </div>
+      </div>
+      <div class="exp-body">
+        <ul>
+          <li>Telegram Bot: AI-driven order &amp; service automation for businesses</li>
+          <li>Meta-Manager: Auto-reply and analytics platform for Meta platforms</li>
+          <li>Crypto App: Cross-platform app for market tracking, whale alerts, and AI news insights</li>
+          <li>AI Buttons: Modular RAG-based assistants for web/software integration</li>
+          <li>B2B Services: Custom AI tools for enterprises in Canada, Oman, and Iran</li>
+          <li>API Services: Advanced AI/NLP APIs for third-party integration</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-logo">
+          <img src="figures/logo_bluenest.png" alt="BlueNest"
+               onerror="this.outerHTML='<div class=\'logo-ph\'>Blue-Nest</div>'">
+        </div>
+        <div class="exp-meta">
+          <div class="role">CTO &amp; Co-Founder</div>
+          <div class="org">BlueNest · bluenest.ai</div>
+          <div class="period">Sep 2025 – Present · Part-time</div>
+        </div>
+      </div>
+      <div class="exp-body">
+        <ul>
+          <li>Agentic intelligent platform for real estate analysis</li>
+          <li>AI-driven property valuation, market insights, and investment analytics</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-logo">
+          <img src="figures/logo_gamlab.png" alt="GAM Lab"
+               onerror="this.outerHTML='<div class=\'logo-ph\'>GAM Lab</div>'">
+        </div>
+        <div class="exp-meta">
+          <div class="role">Head of Artificial Intelligence Group</div>
+          <div class="org">GAM Lab — Graphene and Advanced Materials Laboratory, AUT</div>
+          <div class="period">Feb 2023 – Mar 2025 · Part-time</div>
+        </div>
+      </div>
+      <div class="exp-body">
+        <ul>
+          <li>Led AI research at the intersection of machine learning and nanotechnology, focusing on graphene-based materials</li>
+          <li>Taught Python and machine learning; assigned student projects and supervised academic and industrial research</li>
+          <li>Developed Python tools for materials analysis and facilitated cross-group AI integration</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-logo">
+          <img src="figures/logo_polito.png" alt="Polito"
+               onerror="this.outerHTML='<div class=\'logo-ph\'>Polito</div>'">
+        </div>
+        <div class="exp-meta">
+          <div class="role">Teaching Assistant — Quality Control Techniques in Materials Engineering</div>
+          <div class="org">Politecnico di Torino, DIGEP</div>
+          <div class="period">Sep 2024 – Feb 2025 · Part-time</div>
+        </div>
+      </div>
+      <div class="exp-body">
+        <ul>
+          <li>Assisted in the course focusing on practical applications using Minitab and Microsoft Excel for data analysis and quality control methodologies</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-logo">
+          <div class="logo-ph">SAIPA</div>
+        </div>
+        <div class="exp-meta">
+          <div class="role">Quality Control Specialist (Internship)</div>
+          <div class="org">SAIPA Automaker Co.</div>
+          <div class="period">May 2021 – Oct 2021</div>
+        </div>
+      </div>
+      <div class="exp-body">
+        <ul>
+          <li>Implemented rigorous control and monitoring procedures using statistical methods to ensure highest quality standards in automotive manufacturing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section class="section" id="teaching">
+    <h2 class="section-title"><span class="num">04</span> Teaching Experience</h2>
+
+    <div class="teach-item">
+      <div class="course-name">Advanced Artificial Intelligence with Python Programming</div>
+      <div class="course-meta">
+        <span>Fanavari Co., Tehran</span>
+        <span class="hours">50 hrs</span>
+        <span>Jul 2025</span>
+      </div>
+    </div>
+    <div class="teach-item">
+      <div class="course-name">Computational Python and Artificial Intelligence in Engineering</div>
+      <div class="course-meta">
+        <span>AUT &amp; GAM Lab</span>
+        <span class="hours">40 hrs</span>
+        <span>Feb 2025</span>
+      </div>
+    </div>
+    <div class="teach-item">
+      <div class="course-name">Advanced Python Programming (OOP, Backend, Crypto Management)</div>
+      <div class="course-meta">
+        <span>Fanavari Co., Tehran</span>
+        <span class="hours">20 hrs</span>
+        <span>Dec 2024 &amp; May 2025</span>
+      </div>
+    </div>
+    <div class="teach-item">
+      <div class="course-name">Artificial Intelligence and Machine Learning in Engineering</div>
+      <div class="course-meta">
+        <span>AUT &amp; GAM Lab</span>
+        <span class="hours">40 hrs</span>
+        <span>Aug 2024</span>
+      </div>
+    </div>
+    <div class="teach-item">
+      <div class="course-name">Artificial Intelligence and Machine Learning in Engineering</div>
+      <div class="course-meta">
+        <span>AUT &amp; GAM Lab</span>
+        <span class="hours">35 hrs</span>
+        <span>Feb 2024</span>
+      </div>
+    </div>
+    <div class="teach-item">
+      <div class="course-name">Artificial Intelligence and Machine Learning in New Technologies</div>
+      <div class="course-meta">
+        <span>Amirkabir University of Technology</span>
+        <span class="hours">33 hrs</span>
+        <span>Jul 2023</span>
+      </div>
+    </div>
+    <div class="teach-item">
+      <div class="course-name">Webinar: Application of AI and ML in Modern Technology</div>
+      <div class="course-meta">
+        <span>AUT &amp; Iran Nanotechnology Innovation Council</span>
+        <span>Jun 2023</span>
+      </div>
+    </div>
+    <div class="teach-item">
+      <div class="course-name">YouTube Lecture Summaries — Surface Science, Nanotechnology, Polymer Science</div>
+      <div class="course-meta">
+        <span>Self-directed</span>
+        <span>Jul 2024</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <h2 class="section-title"><span class="num">05</span> Professional Projects</h2>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-logo"><div class="logo-ph">Py GAM</div></div>
+        <div class="exp-meta">
+          <div class="role">PyGamLab V1 &amp; V2 — Python Scientific Library</div>
+          <div class="org">Open Source · PyPI · GitHub</div>
+          <div class="period">2024 – 2025</div>
+        </div>
+      </div>
+      <div class="exp-body">
+        <ul>
+          <li>V1: Modular Python package with 187 functions and ~14,000 lines covering unit converters, scientific formulas, and data analysis (Constants, Converters, Functions, Data Analysis modules)</li>
+          <li>V2: Extended with nanotechnology-focused modules, AutoML workflows (TensorFlow), and transfer learning via hybrid physics-based / data-driven models</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-logo"><div class="logo-ph">EBM</div></div>
+        <div class="exp-meta">
+          <div class="role">PM-EBM-Designer-GUI &amp; Py-EBM-PM.Core</div>
+          <div class="org">FreeMelt EBM Machine Integration</div>
+          <div class="period">2025</div>
+        </div>
+      </div>
+      <div class="exp-body">
+        <ul>
+          <li>PyQt-based GUI for importing 3D models (STL, STEP, OBJ) and command files (G-code, SLM), visualization, slicing, hatching, and exporting in OBP format</li>
+          <li>Core Python package for 3D data handling, slicing, hatching, and exporting G-code/OBP formats</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-logo"><div class="logo-ph">defect</div></div>
+        <div class="exp-meta">
+          <div class="role">pydefect-Xdetect — Tomography Defect Analysis GUI</div>
+          <div class="org">Python / ML</div>
+          <div class="period">2025</div>
+        </div>
+      </div>
+      <div class="exp-body">
+        <ul>
+          <li>Python GUI for analyzing tomography data with automated K-means (unsupervised) and supervised models (Decision Tree, Random Forest)</li>
+          <li>Classifies defects and generates interpretable visualizations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-logo"><div class="logo-ph">ANSYS</div></div>
+        <div class="exp-meta">
+          <div class="role">Material Design &amp; Simulation Projects</div>
+          <div class="org">ANSYS Granta, Moldex, Salome</div>
+          <div class="period">2024 – 2025</div>
+        </div>
+      </div>
+      <div class="exp-body">
+        <ul>
+          <li>Aircraft fuselage material selection (PEEK vs Epoxy vs Aluminium) using Ashby charts and solid mechanics</li>
+          <li>Bumper Fascia crash test simulation; heat transfer (stationary + transient quenching) on aluminum composites; injection molding optimization (Moldex)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIMENTAL SKILLS -->
+  <section class="section" id="experimental">
+    <h2 class="section-title"><span class="num">06</span> Experimental Skills</h2>
+    <div class="exp-skills-grid">
+      <div class="exp-skill-item">Laser Powder Bed Fusion</div>
+      <div class="exp-skill-item">Electron Beam Fusion</div>
+      <div class="exp-skill-item">Electron Beam Lithography (EBL)</div>
+      <div class="exp-skill-item">Atomic Layer Deposition (ALD)</div>
+      <div class="exp-skill-item">Focused Ion Beam (FIB) Milling</div>
+      <div class="exp-skill-item">Nanoimprint Lithography (NIL)</div>
+      <div class="exp-skill-item">3D Printing (FFF)</div>
+      <div class="exp-skill-item">Polymer Extrusion &amp; Injection</div>
+      <div class="exp-skill-item">Tensile Strength Analysis</div>
+      <div class="exp-skill-item">Tomography</div>
+      <div class="exp-skill-item">FTIR Analysis</div>
+      <div class="exp-skill-item">SEM / TEM</div>
+      <div class="exp-skill-item">AFM</div>
+      <div class="exp-skill-item">XPS</div>
+      <div class="exp-skill-item">Raman Spectroscopy</div>
+      <div class="exp-skill-item">X-ray Diffraction (XRD)</div>
+      <div class="exp-skill-item">Cleanroom Nanofabrication</div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ─── SIDEBAR ─── -->
+<aside class="sidebar">
+
+  <!-- CONTACT -->
+  <div class="section">
+    <h2 class="section-title">Contact</h2>
+    <ul class="contact-list">
+      <li><span class="cicon">✉</span><a href="mailto:Alipilehvar1999@gmail.com">Alipilehvar1999@gmail.com</a></li>
+      <li><span class="cicon">☎</span><span>+39 347 920 9735</span></li>
+      <li><span class="cicon">🔗</span><a href="https://linkedin.com" target="_blank">LinkedIn Profile</a></li>
+      <li><span class="cicon">⌥</span><a href="https://github.com" target="_blank">GitHub</a></li>
+      <li><span class="cicon">↗</span><a href="https://getplutus.solutions" target="_blank">getplutus.solutions</a></li>
+      <li><span class="cicon">↗</span><a href="https://bluenest.ai" target="_blank">bluenest.ai</a></li>
+      <li><span class="cicon">▶</span><a href="https://youtube.com" target="_blank">YouTube Lectures</a></li>
+    </ul>
+  </div>
+
+  <!-- SOFTWARE SKILLS -->
+  <div class="section">
+    <h2 class="section-title">Software Skills</h2>
+
+    <div class="skill-group">
+      <div class="skill-cat">Programming</div>
+      <div class="skill-pills">
+        <span class="skill-pill highlight">Python</span>
+        <span class="skill-pill highlight">MATLAB</span>
+        <span class="skill-pill">C++</span>
+        <span class="skill-pill">C</span>
+        <span class="skill-pill">HTML/CSS/JS</span>
+        <span class="skill-pill">LaTeX</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-cat">ML / AI Frameworks</div>
+      <div class="skill-pills">
+        <span class="skill-pill highlight">PyTorch</span>
+        <span class="skill-pill highlight">TensorFlow</span>
+        <span class="skill-pill">Scikit-learn</span>
+        <span class="skill-pill">LangChain</span>
+        <span class="skill-pill">FastAPI</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-cat">Simulation &amp; CAE</div>
+      <div class="skill-pills">
+        <span class="skill-pill">ANSYS</span>
+        <span class="skill-pill">Moldex</span>
+        <span class="skill-pill">Salome</span>
+        <span class="skill-pill">LAMMPS</span>
+        <span class="skill-pill">Gaussian 09</span>
+        <span class="skill-pill">Quantum Espresso</span>
+        <span class="skill-pill">Material Studio</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-cat">Visualization &amp; Analysis</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Avogadro</span>
+        <span class="skill-pill">VMD</span>
+        <span class="skill-pill">Minitab</span>
+        <span class="skill-pill">Open Bubble</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATES -->
+  <div class="section">
+    <h2 class="section-title">Certificates</h2>
+    <div class="cert-item">
+      <div class="cert-name">Introduction to Machine Learning Specialization (80 hrs)</div>
+      <div class="cert-org">IBM · Jun 2024</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-name">Unsupervised Machine Learning (24 hrs)</div>
+      <div class="cert-org">IBM · Jun 2024</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-name">Supervised ML: Classification (24 hrs)</div>
+      <div class="cert-org">IBM · May 2024</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-name">Supervised ML: Regression (20 hrs)</div>
+      <div class="cert-org">IBM · May 2024</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-name">Exploratory Data Analysis for ML (14 hrs)</div>
+      <div class="cert-org">IBM · Apr 2024</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-name">Introduction to Physical Chemistry (18 hrs)</div>
+      <div class="cert-org">Stanford University · Apr 2024</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-name">Introduction to Statistics (13 hrs)</div>
+      <div class="cert-org">Stanford University · Mar 2024</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-name">Nanotechnology: A Maker's Course (26 hrs)</div>
+      <div class="cert-org">Duke University · Feb 2024</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-name">IELTS — Band 6.5 (R:7 L:7 S:6.5 W:6)</div>
+      <div class="cert-org">British Council</div>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="section">
+    <h2 class="section-title">References</h2>
+
+    <div class="ref-item">
+      <div class="ref-name">Prof. Abdollah Saboori</div>
+      <div class="ref-title">Associate Professor, DIGEP<br>Politecnico di Torino</div>
+      <div class="ref-email">abdollah.saboori@polito.it</div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-name">Prof. Malek Naderi</div>
+      <div class="ref-title">Full Professor, Materials Engineering<br>Amirkabir University of Technology</div>
+      <div class="ref-email">Mnaderi@aut.ac.ir</div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-name">Prof. Shahriar Hojati Emami</div>
+      <div class="ref-title">Associate Professor, Biomedical Engineering<br>Amirkabir University of Technology</div>
+      <div class="ref-email">Semami@aut.ac.ir</div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-name">Prof. Shadab Bagheri</div>
+      <div class="ref-title">Assistant Professor, Polymer Engineering<br>Amirkabir University of Technology</div>
+      <div class="ref-email">S.bagheri@aut.ac.ir</div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-name">Prof. MohammadJavad Hafezi</div>
+      <div class="ref-title">Assistant Professor, Polymer Engineering<br>Amirkabir University of Technology</div>
+      <div class="ref-email">Hafezi@aut.ac.ir</div>
+    </div>
+  </div>
+
+</aside>
+</div>
+
+<footer>
+  <strong>Ali Pilehvar Meibody</strong> · Materials Engineering for Industry 4.0 · Politecnico di Torino &amp; EPFL ·
+  <a href="mailto:Alipilehvar1999@gmail.com" style="color:rgba(255,255,255,0.6);text-decoration:none;">Alipilehvar1999@gmail.com</a>
+</footer>
+
+</body>
+</html>
