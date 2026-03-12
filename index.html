@@ -6,6 +6,18 @@
 <title>Ali Pilehvar Meibody — Academic CV</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    try {
+      var savedTheme = localStorage.getItem('theme-preference');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', initialTheme);
+    } catch (error) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
 <style>
   :root {
     --cream: #FAFAF7;
@@ -37,6 +49,7 @@
     line-height: 1.75;
     -webkit-font-smoothing: antialiased;
   }
+  img { max-width: 100%; height: auto; }
   section[id] { scroll-margin-top: 84px; }
 
   /* ─── TOPBAR NAV ─── */
@@ -74,6 +87,30 @@
     transition: color 0.2s;
   }
   #topbar nav a:hover { color: var(--gold); }
+  .theme-toggle {
+    appearance: none;
+    border: 1px solid var(--rule);
+    background: transparent;
+    border-radius: 999px;
+    color: var(--text-secondary);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.38rem 0.62rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+  }
+  .theme-toggle:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: rgba(139, 105, 20, 0.06);
+  }
+  .theme-toggle-icon { font-size: 0.85rem; }
 
   /* ─── HERO ─── */
   #hero {
@@ -781,6 +818,52 @@
   }
   footer strong { color: rgba(255,255,255,0.8); }
 
+  /* ─── THEME: DARK MODE ─── */
+  html[data-theme='dark'] {
+    --cream: #0f1524;
+    --warm-white: #131b2d;
+    --parchment: #1b2336;
+    --gold: #d8b25f;
+    --gold-light: #e5c97f;
+    --navy: #e6ebff;
+    --navy-mid: #c4d0f3;
+    --text-primary: #eef3ff;
+    --text-secondary: #cad3ea;
+    --text-muted: #9ba9cb;
+    --rule: #303c59;
+    --rule-light: #26314a;
+    --accent-red: #e58a8a;
+  }
+  html[data-theme='dark'] #topbar {
+    background: rgba(12, 18, 31, 0.9);
+  }
+  html[data-theme='dark'] #hero {
+    background: #0f1930;
+  }
+  html[data-theme='dark'] main .section {
+    background: rgba(19, 27, 45, 0.78);
+  }
+  html[data-theme='dark'] .affiliation-item {
+    background: rgba(16, 24, 41, 0.86);
+    border-color: rgba(76, 95, 138, 0.8);
+  }
+  html[data-theme='dark'] .affiliation-item img {
+    filter: saturate(0.9) brightness(0.95);
+  }
+  html[data-theme='dark'] .edu-logo img,
+  html[data-theme='dark'] .exp-logo img,
+  html[data-theme='dark'] .cert-slide,
+  html[data-theme='dark'] .cert-slide img {
+    background: #0f1728;
+  }
+  html[data-theme='dark'] .tag-published { background: #233727; color: #99d79f; }
+  html[data-theme='dark'] .tag-review { background: #3d301f; color: #efbf79; }
+  html[data-theme='dark'] .tag-prep { background: #302641; color: #cbb0f6; }
+  html[data-theme='dark'] .theme-toggle {
+    border-color: var(--rule-light);
+    color: var(--text-primary);
+  }
+
   /* ─── ANIMATIONS ─── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
@@ -793,7 +876,7 @@
   @media (max-width: 980px) {
     #topbar { padding: 0 1.4rem; }
     #topbar nav { gap: 0.9rem; }
-    #topbar nav a { font-size: 0.74rem; }
+    #topbar nav a, .theme-toggle { font-size: 0.74rem; }
     #main {
       grid-template-columns: 1fr;
       gap: 0;
@@ -808,24 +891,42 @@
     .certificates-inner { max-width: 100%; }
   }
   @media (max-width: 768px) {
+    section[id] { scroll-margin-top: 130px; }
     #topbar {
+      position: sticky;
+      top: 0;
       padding: 0.6rem 1rem;
       height: auto;
       display: grid;
       gap: 0.45rem;
+    }
+    #topbar .brand {
+      font-size: 0.95rem;
+      text-align: center;
+      width: 100%;
     }
     #topbar nav {
       gap: 0.8rem;
       overflow-x: auto;
       white-space: nowrap;
       padding-bottom: 0.25rem;
+      -webkit-overflow-scrolling: touch;
     }
-    #hero { margin-top: 86px; padding: 4rem 0 3rem; }
+    #hero { margin-top: 0; padding: 3.4rem 0 2.6rem; }
     .hero-inner { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 1.2rem; }
     .hero-photo-wrap { display: flex; justify-content: center; }
     .hero-photo-wrap img, .hero-photo-placeholder { width: 160px; height: 160px; }
+    .hero-text { text-align: center; }
+    .hero-text .title-line { font-size: 0.88rem; }
+    .hero-text p.summary { font-size: 0.95rem; line-height: 1.7; }
+    .hero-links { justify-content: center; }
+    .affiliation-item { min-width: 86px; min-height: 48px; }
+    .affiliation-item img { height: 36px; }
     #main { padding: 2rem 1.2rem; }
     main .section { padding: 1.15rem 1.1rem; }
+    .section-title { font-size: 1.28rem; gap: 0.55rem; }
+    .exp-header { gap: 0.7rem; }
+    .exp-body { padding-left: 0; }
     .pub-item { grid-template-columns: 120px 1fr; }
     .pub-thumb img, .pub-thumb .img-ph { width: 120px; height: 84px; }
     .exp-skills-grid { grid-template-columns: 1fr; }
@@ -834,6 +935,61 @@
     .cert-slide { width: 86vw; min-height: 250px; }
     .cert-slide img { height: 210px; }
     .cert-slide .cert-slide-title { font-size: 0.94rem; }
+    footer { padding: 1.5rem 1rem; font-size: 0.78rem; line-height: 1.6; }
+  }
+  @media (max-width: 620px) {
+    #main { padding: 1.6rem 0.9rem; }
+    main .section, .sidebar .section { padding: 1rem 0.9rem; }
+    .section-title { align-items: flex-start; margin-bottom: 1.2rem; }
+    .edu-item {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 1.2rem;
+    }
+    .edu-logo {
+      padding-top: 0;
+      display: flex;
+      justify-content: flex-start;
+    }
+    .pub-item {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 1.2rem;
+    }
+    .pub-thumb img, .pub-thumb .img-ph {
+      width: 100%;
+      max-width: 240px;
+      height: auto;
+      aspect-ratio: 41 / 28;
+    }
+    .exp-meta .period { line-height: 1.5; }
+    .cert-slide {
+      width: 90vw;
+      min-height: 220px;
+      padding: 0.55rem;
+    }
+    .cert-slide img { height: 170px; }
+  }
+  @media (max-width: 420px) {
+    body { font-size: 15px; }
+    section[id] { scroll-margin-top: 142px; }
+    #topbar { padding: 0.55rem 0.7rem; }
+    #topbar nav a, .theme-toggle { font-size: 0.68rem; letter-spacing: 0.08em; }
+    .hero-inner { padding: 0 0.85rem; }
+    .hero-photo-wrap img, .hero-photo-placeholder { width: 136px; height: 136px; }
+    .hero-text h1 { font-size: clamp(1.85rem, 9vw, 2.25rem); }
+    .hero-text .title-line { font-size: 0.8rem; margin-bottom: 0.8rem; }
+    .hero-links a {
+      font-size: 0.66rem;
+      padding: 0.32rem 0.6rem;
+      letter-spacing: 0.05em;
+    }
+    #main { padding: 1.35rem 0.65rem; }
+    .certificates-inner { padding: 0 0.45rem; }
+    .cert-slide { width: 92vw; }
+    .cert-slide .cert-slide-title { font-size: 0.88rem; }
   }
 </style>
 </head>
@@ -849,6 +1005,10 @@
     <a href="#teaching">Teaching</a>
     <a href="#certificates">Certificates</a>
     <a href="#projects">Projects</a>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+      <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+      <span class="theme-toggle-label">Dark</span>
+    </button>
   </nav>
 </header>
 
@@ -1434,30 +1594,6 @@
     </div>
   </section>
 
-  <!-- EXPERIMENTAL SKILLS -->
-  <section class="section" id="experimental">
-    <h2 class="section-title"><span class="num">06</span> Experimental Skills</h2>
-    <div class="exp-skills-grid">
-      <div class="exp-skill-item">Laser Powder Bed Fusion</div>
-      <div class="exp-skill-item">Electron Beam Fusion</div>
-      <div class="exp-skill-item">Electron Beam Lithography (EBL)</div>
-      <div class="exp-skill-item">Atomic Layer Deposition (ALD)</div>
-      <div class="exp-skill-item">Focused Ion Beam (FIB) Milling</div>
-      <div class="exp-skill-item">Nanoimprint Lithography (NIL)</div>
-      <div class="exp-skill-item">3D Printing (FFF)</div>
-      <div class="exp-skill-item">Polymer Extrusion &amp; Injection</div>
-      <div class="exp-skill-item">Tensile Strength Analysis</div>
-      <div class="exp-skill-item">Tomography</div>
-      <div class="exp-skill-item">FTIR Analysis</div>
-      <div class="exp-skill-item">SEM / TEM</div>
-      <div class="exp-skill-item">AFM</div>
-      <div class="exp-skill-item">XPS</div>
-      <div class="exp-skill-item">Raman Spectroscopy</div>
-      <div class="exp-skill-item">X-ray Diffraction (XRD)</div>
-      <div class="exp-skill-item">Cleanroom Nanofabrication</div>
-    </div>
-  </section>
-
 </main>
 
 <!-- ─── SIDEBAR ─── -->
@@ -1468,7 +1604,12 @@
     <h2 class="section-title">Contact</h2>
     <ul class="contact-list">
       <li><span class="cicon">✉</span><a href="mailto:Alipilehvar1999@gmail.com">Alipilehvar1999@gmail.com</a></li>
+      <li><span class="cicon">✉</span><a href="mailto:Ali.Pilehvarmeibody@polito.studenti.it">Ali.Pilehvarmeibody@polito.studenti.it</a></li>
+      <li><span class="cicon">✉</span><a href="mailto:Ali.Pilehvarmeibody@epfl.ch">Ali.Pilehvarmeibody@epfl.ch</a></li>
+      <li><span class="cicon">✉</span><a href="mailto:ali@bluenest.ai">ali@bluenest.ai</a></li>
       <li><span class="cicon">☎</span><span>+39 347 920 9735</span></li>
+      <li><span class="cicon">☎</span><span>+41 77 291 91 71</span></li>
+      <li><span class="cicon">☎</span><span>+98 919 7888 164</span></li
       <li><span class="cicon">🔗</span><a href="https://linkedin.com" target="_blank">LinkedIn Profile</a></li>
       <li><span class="cicon">⌥</span><a href="https://github.com" target="_blank">GitHub</a></li>
       <li><span class="cicon">↗</span><a href="https://getplutus.solutions" target="_blank">getplutus.solutions</a></li>
@@ -1525,6 +1666,30 @@
         <span class="skill-pill">Minitab</span>
         <span class="skill-pill">Open Bubble</span>
       </div>
+    </div>
+  </div>
+
+  <!-- EXPERIMENTAL SKILLS -->
+  <div class="section" id="experimental">
+    <h2 class="section-title">Experimental Skills</h2>
+    <div class="exp-skills-grid">
+      <div class="exp-skill-item">Laser Powder Bed Fusion</div>
+      <div class="exp-skill-item">Electron Beam Fusion</div>
+      <div class="exp-skill-item">Electron Beam Lithography (EBL)</div>
+      <div class="exp-skill-item">Atomic Layer Deposition (ALD)</div>
+      <div class="exp-skill-item">Focused Ion Beam (FIB) Milling</div>
+      <div class="exp-skill-item">Nanoimprint Lithography (NIL)</div>
+      <div class="exp-skill-item">3D Printing (FFF)</div>
+      <div class="exp-skill-item">Polymer Extrusion &amp; Injection</div>
+      <div class="exp-skill-item">Tensile Strength Analysis</div>
+      <div class="exp-skill-item">Tomography</div>
+      <div class="exp-skill-item">FTIR Analysis</div>
+      <div class="exp-skill-item">SEM / TEM</div>
+      <div class="exp-skill-item">AFM</div>
+      <div class="exp-skill-item">XPS</div>
+      <div class="exp-skill-item">Raman Spectroscopy</div>
+      <div class="exp-skill-item">X-ray Diffraction (XRD)</div>
+      <div class="exp-skill-item">Cleanroom Nanofabrication</div>
     </div>
   </div>
 
@@ -1606,7 +1771,7 @@
 <!-- ─── FULL-WIDTH CERTIFICATES ─── -->
 <section id="certificates" class="full-width-certificates">
   <div class="certificates-inner">
-    <h2 class="section-title"><span class="num">07</span> Certificates</h2>
+    <h2 class="section-title"><span class="num">06</span> Certificates</h2>
     <div class="cert-slider-wrap">
       <div class="cert-slider-row left">
         <div class="cert-slider-track">
@@ -1657,9 +1822,58 @@
 </section>
 
 <footer>
-  <strong>Ali Pilehvar Meibody</strong> · Materials Engineering for Industry 4.0 · Politecnico di Torino &amp; EPFL ·
+  <strong>Ali Pilehvar Meibody</strong> 
+  <strong>|</strong> 
   <a href="mailto:Alipilehvar1999@gmail.com" style="color:rgba(255,255,255,0.6);text-decoration:none;">Alipilehvar1999@gmail.com</a>
+  <strong>|</strong> 
+  <a href="mailto:Ali.Pilehvarmeibody@polito.studenti.it" style="color:rgba(255,255,255,0.6);text-decoration:none;">Ali.Pilehvarmeibody@polito.studenti.it</a>
+  <strong>|</strong> 
+  <a href="mailto:Ali.Pilehvarmeibody@epfl.ch" style="color:rgba(255,255,255,0.6);text-decoration:none;">Ali.Pilehvarmeibody@epfl.ch</a>
 </footer>
+
+<script>
+  (function () {
+    var storageKey = 'theme-preference';
+    var root = document.documentElement;
+    var toggleButton = document.getElementById('theme-toggle');
+    var toggleIcon = toggleButton ? toggleButton.querySelector('.theme-toggle-icon') : null;
+    var toggleLabel = toggleButton ? toggleButton.querySelector('.theme-toggle-label') : null;
+    var mediaQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+    function currentTheme() {
+      return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    }
+
+    function setTheme(theme, persist) {
+      var normalized = theme === 'dark' ? 'dark' : 'light';
+      root.setAttribute('data-theme', normalized);
+      if (toggleButton) {
+        var isDark = normalized === 'dark';
+        toggleButton.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+        if (toggleIcon) toggleIcon.textContent = isDark ? '☀️' : '🌙';
+        if (toggleLabel) toggleLabel.textContent = isDark ? 'Light' : 'Dark';
+      }
+      if (persist) {
+        localStorage.setItem(storageKey, normalized);
+      }
+    }
+
+    if (toggleButton) {
+      setTheme(currentTheme(), false);
+      toggleButton.addEventListener('click', function () {
+        setTheme(currentTheme() === 'dark' ? 'light' : 'dark', true);
+      });
+    }
+
+    if (mediaQuery) {
+      mediaQuery.addEventListener('change', function (event) {
+        if (!localStorage.getItem(storageKey)) {
+          setTheme(event.matches ? 'dark' : 'light', false);
+        }
+      });
+    }
+  })();
+</script>
 
 </body>
 </html>
