@@ -188,23 +188,43 @@
     color: white;
   }
   .affiliation-logos {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
     margin-top: 1.8rem;
     padding-top: 1.5rem;
     border-top: 1px solid rgba(255,255,255,0.12);
-    flex-wrap: wrap;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
   }
-  .affiliation-logos img {
+  .affiliation-track {
+    width: max-content;
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    animation: affiliationSlide 28s linear infinite;
+  }
+  .affiliation-logos:hover .affiliation-track { animation-play-state: paused; }
+  .affiliation-item {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 96px;
+    min-height: 52px;
+    padding: 0.35rem 0.75rem;
+    background: rgba(255,255,255,0.94);
+    border: 1px solid rgba(255,255,255,0.98);
+    border-radius: 6px;
+  }
+  .affiliation-item img {
     height: 42px;
     width: auto;
     object-fit: contain;
-    opacity: 0.85;
-    filter: brightness(2) saturate(0);
-    transition: opacity 0.2s;
+    opacity: 0.9;
+    filter: none;
+    transition: opacity 0.2s, filter 0.2s;
   }
-  .affiliation-logos img:hover { opacity: 1; filter: none; }
+  .affiliation-item img:hover { opacity: 1; filter: none; }
   .affil-placeholder {
     height: 36px;
     display: inline-flex;
@@ -219,6 +239,10 @@
     text-transform: uppercase;
     font-weight: 500;
     white-space: nowrap;
+  }
+  @keyframes affiliationSlide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 
   /* ─── MAIN LAYOUT ─── */
@@ -643,6 +667,87 @@
     color: var(--gold);
   }
 
+  /* ─── CERTIFICATES SLIDER ─── */
+  .cert-slider-wrap {
+    margin-top: 0.8rem;
+    display: grid;
+    gap: 1rem;
+    padding: 0.4rem 0;
+    border-top: 1px solid var(--rule-light);
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .cert-slider-row {
+    overflow: hidden;
+  }
+  .cert-slider-track {
+    width: max-content;
+    display: inline-flex;
+    gap: 1rem;
+  }
+  .cert-slider-row.left .cert-slider-track {
+    animation: certificateSlideLeft 95s linear infinite;
+  }
+  .cert-slider-row.right .cert-slider-track {
+    animation: certificateSlideRight 95s linear infinite;
+  }
+  .cert-slide {
+    width: min(62vw, 620px);
+    min-height: 360px;
+    padding: 0.7rem;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(18, 31, 61, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cert-slide img {
+    width: 100%;
+    height: 320px;
+    object-fit: contain;
+    border-radius: 4px;
+    display: block;
+    background: #ffffff;
+  }
+  .cert-slide .cert-slide-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-top: 0.55rem;
+    margin-bottom: 0.2rem;
+  }
+  .cert-slide .cert-slide-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+  .full-width-certificates {
+    width: 100%;
+    margin: 0;
+    padding: 3rem 0 3.4rem;
+    background: var(--warm-white);
+    border-top: 1px solid var(--rule-light);
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .certificates-inner {
+    max-width: min(1500px, 97vw);
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  .full-width-certificates .section-title {
+    margin-bottom: 1.1rem;
+  }
+  @keyframes certificateSlideLeft {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes certificateSlideRight {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+
   /* ─── EXPERIMENTAL SKILLS TABLE ─── */
   .exp-skills-grid {
     display: grid;
@@ -700,6 +805,7 @@
       border-top: 2px solid var(--rule);
       padding-top: 2rem;
     }
+    .certificates-inner { max-width: 100%; }
   }
   @media (max-width: 768px) {
     #topbar {
@@ -723,6 +829,11 @@
     .pub-item { grid-template-columns: 120px 1fr; }
     .pub-thumb img, .pub-thumb .img-ph { width: 120px; height: 84px; }
     .exp-skills-grid { grid-template-columns: 1fr; }
+    .full-width-certificates { padding: 2.2rem 0 2.5rem; }
+    .certificates-inner { padding: 0 0.7rem; }
+    .cert-slide { width: 86vw; min-height: 250px; }
+    .cert-slide img { height: 210px; }
+    .cert-slide .cert-slide-title { font-size: 0.94rem; }
   }
 </style>
 </head>
@@ -736,6 +847,7 @@
     <a href="#publications">Publications</a>
     <a href="#experience">Experience</a>
     <a href="#teaching">Teaching</a>
+    <a href="#certificates">Certificates</a>
     <a href="#projects">Projects</a>
   </nav>
 </header>
@@ -762,18 +874,65 @@
         <a href="https://youtube.com" target="_blank">▶ YouTube</a>
       </div>
       <div class="affiliation-logos">
-        <img src="figures/logo_epfl.png" alt="EPFL"
-             onerror="this.outerHTML='<span class=\'affil-placeholder\'>EPFL</span>'">
-        <img src="figures/logo_polito.png" alt="Politecnico di Torino"
-             onerror="this.outerHTML='<span class=\'affil-placeholder\'>Polito</span>'">
-        <img src="figures/logo_amirkabir.png" alt="Amirkabir University"
-             onerror="this.outerHTML='<span class=\'affil-placeholder\'>AUT</span>'">
-        <img src="figures/logo_gamlab.png" alt="GAM Lab"
-             onerror="this.outerHTML='<span class=\'affil-placeholder\'>GAM Lab</span>'">
-        <img src="figures/logo_plutus.png" alt="PLUTUS"
-             onerror="this.outerHTML='<span class=\'affil-placeholder\'>PLUTUS</span>'">
-        <img src="figures/logo_bluenest.png" alt="BlueNest"
-             onerror="this.outerHTML='<span class=\'affil-placeholder\'>BlueNest</span>'">
+        <div class="affiliation-track">
+          <span class="affiliation-item">
+            <img src="figures/logo_epfl.png" alt="EPFL"
+                 onerror="this.outerHTML='<span class=\'affil-placeholder\'>EPFL</span>'">
+          </span>
+          <span class="affiliation-item">
+            <img src="figures/logo_polito.png" alt="Politecnico di Torino"
+                 onerror="this.outerHTML='<span class=\'affil-placeholder\'>Polito</span>'">
+          </span>
+          <span class="affiliation-item">
+            <img src="figures/logo_amirkabir.png" alt="Amirkabir University"
+                 onerror="this.outerHTML='<span class=\'affil-placeholder\'>AUT</span>'">
+          </span>
+          <span class="affiliation-item">
+            <img src="figures/logo_gamlab.png" alt="GAM Lab"
+                 onerror="this.outerHTML='<span class=\'affil-placeholder\'>GAM Lab</span>'">
+          </span>
+          <span class="affiliation-item">
+            <img src="figures/logo_plutus.png" alt="PLUTUS"
+                 onerror="this.outerHTML='<span class=\'affil-placeholder\'>PLUTUS</span>'">
+          </span>
+          <span class="affiliation-item">
+            <img src="figures/logo_bluenest.png" alt="BlueNest"
+                 onerror="this.outerHTML='<span class=\'affil-placeholder\'>BlueNest</span>'">
+          </span>
+          <span class="affiliation-item">
+            <img src="figures/logo_saipa.png" alt="SAIPA"
+                 onerror="this.outerHTML='<span class=\'affil-placeholder\'>SAIPA</span>'">
+          </span>
+
+          <span class="affiliation-item" aria-hidden="true">
+            <img src="figures/logo_epfl.png" alt="EPFL"
+                 onerror="this.outerHTML='<span class=\'affil-placeholder\'>EPFL</span>'">
+          </span>
+          <span class="affiliation-item" aria-hidden="true">
+            <img src="figures/logo_polito.png" alt="Politecnico di Torino"
+                 onerror="this.outerHTML='<span class=\'affil-placeholder\'>Polito</span>'">
+          </span>
+          <span class="affiliation-item" aria-hidden="true">
+            <img src="figures/logo_amirkabir.png" alt="Amirkabir University"
+                 onerror="this.outerHTML='<span class=\'affil-placeholder\'>AUT</span>'">
+          </span>
+          <span class="affiliation-item" aria-hidden="true">
+            <img src="figures/logo_gamlab.png" alt="GAM Lab"
+                 onerror="this.outerHTML='<span class=\'affil-placeholder\'>GAM Lab</span>'">
+          </span>
+          <span class="affiliation-item" aria-hidden="true">
+            <img src="figures/logo_plutus.png" alt="PLUTUS"
+                 onerror="this.outerHTML='<span class=\'affil-placeholder\'>PLUTUS</span>'">
+          </span>
+          <span class="affiliation-item" aria-hidden="true">
+            <img src="figures/logo_bluenest.png" alt="BlueNest"
+                 onerror="this.outerHTML='<span class=\'affil-placeholder\'>BlueNest</span>'">
+          </span>
+          <span class="affiliation-item" aria-hidden="true">
+            <img src="figures/logo_saipa.png" alt="SAIPA"
+                 onerror="this.outerHTML='<span class=\'affil-placeholder\'>SAIPA</span>'">
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -1117,7 +1276,8 @@
     <div class="exp-item">
       <div class="exp-header">
         <div class="exp-logo">
-          <div class="logo-ph">SAIPA</div>
+          <img src="figures/logo_saipa.png" alt="SAIPA"
+                onerror="this.outerHTML='<div class=\'logo-ph\'>SAIPA</div>'">
         </div>
         <div class="exp-meta">
           <div class="role">Quality Control Specialist (Internship)</div>
@@ -1442,6 +1602,59 @@
 
 </aside>
 </div>
+
+<!-- ─── FULL-WIDTH CERTIFICATES ─── -->
+<section id="certificates" class="full-width-certificates">
+  <div class="certificates-inner">
+    <h2 class="section-title"><span class="num">07</span> Certificates</h2>
+    <div class="cert-slider-wrap">
+      <div class="cert-slider-row left">
+        <div class="cert-slider-track">
+          <article class="cert-slide"><img src="figures/certificates/special.png" alt="Machine Learning Specialization Certificate"><div class="cert-slide-title">Machine Learning Specialization</div><div class="cert-slide-meta">special.png</div></article>
+          <article class="cert-slide"><img src="figures/certificates/unsupervised.png" alt="Unsupervised Machine Learning Certificate"><div class="cert-slide-title">Unsupervised Machine Learning</div><div class="cert-slide-meta">unsupervised.png</div></article>
+          <article class="cert-slide"><img src="figures/certificates/classification.png" alt="Supervised Machine Learning Classification Certificate"><div class="cert-slide-title">Supervised ML: Classification</div><div class="cert-slide-meta">classification.png</div></article>
+          <article class="cert-slide"><img src="figures/certificates/regression.png" alt="Supervised Machine Learning Regression Certificate"><div class="cert-slide-title">Supervised ML: Regression</div><div class="cert-slide-meta">regression.png</div></article>
+          <article class="cert-slide"><img src="figures/certificates/eda.png" alt="Exploratory Data Analysis Certificate"><div class="cert-slide-title">Exploratory Data Analysis for ML</div><div class="cert-slide-meta">eda.png</div></article>
+          <article class="cert-slide"><img src="figures/certificates/physical_chemistry.png" alt="Introduction to Physical Chemistry Certificate"><div class="cert-slide-title">Introduction to Physical Chemistry</div><div class="cert-slide-meta">physical_chemistry.png</div></article>
+          <article class="cert-slide"><img src="figures/certificates/statistic.png" alt="Introduction to Statistics Certificate"><div class="cert-slide-title">Introduction to Statistics</div><div class="cert-slide-meta">statistic.png</div></article>
+          <article class="cert-slide"><img src="figures/certificates/nanomaker.png" alt="Nanotechnology Makers Course Certificate"><div class="cert-slide-title">Nanotechnology: A Maker's Course</div><div class="cert-slide-meta">nanomaker.png</div></article>
+          <article class="cert-slide"><img src="figures/certificates/aug24.jpg" alt="Certificate August 2024"><div class="cert-slide-title">Academic Certificate</div><div class="cert-slide-meta">aug24.jpg</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/special.png" alt="Machine Learning Specialization Certificate"><div class="cert-slide-title">Machine Learning Specialization</div><div class="cert-slide-meta">special.png</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/unsupervised.png" alt="Unsupervised Machine Learning Certificate"><div class="cert-slide-title">Unsupervised Machine Learning</div><div class="cert-slide-meta">unsupervised.png</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/classification.png" alt="Supervised Machine Learning Classification Certificate"><div class="cert-slide-title">Supervised ML: Classification</div><div class="cert-slide-meta">classification.png</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/regression.png" alt="Supervised Machine Learning Regression Certificate"><div class="cert-slide-title">Supervised ML: Regression</div><div class="cert-slide-meta">regression.png</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/eda.png" alt="Exploratory Data Analysis Certificate"><div class="cert-slide-title">Exploratory Data Analysis for ML</div><div class="cert-slide-meta">eda.png</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/physical_chemistry.png" alt="Introduction to Physical Chemistry Certificate"><div class="cert-slide-title">Introduction to Physical Chemistry</div><div class="cert-slide-meta">physical_chemistry.png</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/statistic.png" alt="Introduction to Statistics Certificate"><div class="cert-slide-title">Introduction to Statistics</div><div class="cert-slide-meta">statistic.png</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/nanomaker.png" alt="Nanotechnology Makers Course Certificate"><div class="cert-slide-title">Nanotechnology: A Maker's Course</div><div class="cert-slide-meta">nanomaker.png</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/aug24.jpg" alt="Certificate August 2024"><div class="cert-slide-title">Academic Certificate</div><div class="cert-slide-meta">aug24.jpg</div></article>
+        </div>
+      </div>
+      <div class="cert-slider-row right">
+        <div class="cert-slider-track">
+          <article class="cert-slide"><img src="figures/certificates/feb24.jpg" alt="Certificate February 2024"><div class="cert-slide-title">Academic Certificate</div><div class="cert-slide-meta">feb24.jpg</div></article>
+          <article class="cert-slide"><img src="figures/certificates/feb25.jpg" alt="Certificate February 2025"><div class="cert-slide-title">Academic Certificate</div><div class="cert-slide-meta">feb25.jpg</div></article>
+          <article class="cert-slide"><img src="figures/certificates/jul23.jpg" alt="Certificate July 2023"><div class="cert-slide-title">Academic Certificate</div><div class="cert-slide-meta">jul23.jpg</div></article>
+          <article class="cert-slide"><img src="figures/certificates/may25.jpg" alt="Certificate May 2025"><div class="cert-slide-title">Academic Certificate</div><div class="cert-slide-meta">may25.jpg</div></article>
+          <article class="cert-slide"><img src="figures/certificates/web23.jpg" alt="Webinar Certificate 2023"><div class="cert-slide-title">Webinar Certificate</div><div class="cert-slide-meta">web23.jpg</div></article>
+          <article class="cert-slide"><img src="figures/certificates/fan1.png" alt="Fanavari Certificate 1"><div class="cert-slide-title">Fanavari Certificate</div><div class="cert-slide-meta">fan1.png</div></article>
+          <article class="cert-slide"><img src="figures/certificates/fan2.png" alt="Fanavari Certificate 2"><div class="cert-slide-title">Fanavari Certificate</div><div class="cert-slide-meta">fan2.png</div></article>
+          <article class="cert-slide"><img src="figures/certificates/fan3.png" alt="Fanavari Certificate 3"><div class="cert-slide-title">Fanavari Certificate</div><div class="cert-slide-meta">fan3.png</div></article>
+          <article class="cert-slide"><img src="figures/certificates/special.png" alt="Machine Learning Specialization Certificate"><div class="cert-slide-title">Machine Learning Specialization</div><div class="cert-slide-meta">special.png</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/feb24.jpg" alt="Certificate February 2024"><div class="cert-slide-title">Academic Certificate</div><div class="cert-slide-meta">feb24.jpg</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/feb25.jpg" alt="Certificate February 2025"><div class="cert-slide-title">Academic Certificate</div><div class="cert-slide-meta">feb25.jpg</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/jul23.jpg" alt="Certificate July 2023"><div class="cert-slide-title">Academic Certificate</div><div class="cert-slide-meta">jul23.jpg</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/may25.jpg" alt="Certificate May 2025"><div class="cert-slide-title">Academic Certificate</div><div class="cert-slide-meta">may25.jpg</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/web23.jpg" alt="Webinar Certificate 2023"><div class="cert-slide-title">Webinar Certificate</div><div class="cert-slide-meta">web23.jpg</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/fan1.png" alt="Fanavari Certificate 1"><div class="cert-slide-title">Fanavari Certificate</div><div class="cert-slide-meta">fan1.png</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/fan2.png" alt="Fanavari Certificate 2"><div class="cert-slide-title">Fanavari Certificate</div><div class="cert-slide-meta">fan2.png</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/fan3.png" alt="Fanavari Certificate 3"><div class="cert-slide-title">Fanavari Certificate</div><div class="cert-slide-meta">fan3.png</div></article>
+          <article class="cert-slide" aria-hidden="true"><img src="figures/certificates/special.png" alt="Machine Learning Specialization Certificate"><div class="cert-slide-title">Machine Learning Specialization</div><div class="cert-slide-meta">special.png</div></article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
   <strong>Ali Pilehvar Meibody</strong> · Materials Engineering for Industry 4.0 · Politecnico di Torino &amp; EPFL ·
