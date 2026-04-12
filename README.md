@@ -16,7 +16,7 @@ Your repository structure should look like this:
 [your-username].github.io/
 ├── index.html          ← The CV page
 ├── figures/
-│   ├── photo.jpg                     ← Your profile photo
+│   ├── photo.jpg                     
 │   ├── logo_epfl.png
 │   ├── logo_polito.png
 │   ├── logo_amirkabir.png
@@ -44,18 +44,11 @@ Your repository structure should look like this:
 - Under "Source", select **Deploy from a branch**
 - Select branch: `main` (or `master`), folder: `/ (root)`
 - Click **Save**
-- Your site will be live at `https://[your-username].github.io` within ~2 minutes
+- Your site will be live at `https://[my-username].github.io` within ~2 minutes
 
 ### 4. Figures Folder Notes
 
-Rename your figure files to match what the HTML expects:
-- `logo_epfl.png` — EPFL logo
-- `logo_polito.png` — Politecnico di Torino logo
-- `logo_amirkabir.png` — Amirkabir University logo
-- `logo_gamlab.png` — GAM Lab logo
-- `logo_plutus.png` — PLUTUS logo
-- `logo_bluenest.png` — BlueNest logo
-- `photo.jpg` — Your profile photo (square, ideally 400×400px)
+
 
 All logos will gracefully fall back to text badges if the images are not found.
 
